@@ -1,6 +1,7 @@
 package com.example.viewdemo;
 
 import android.annotation.SuppressLint;
+import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -108,6 +109,13 @@ public class MainActivity extends AppCompatActivity {
             public void onLongClick() {
                 Log.d(TAG, "Detected Long click ont the textView");
                 super.onLongClick();
+                if(!txtViewSample.getPaint().isStrikeThruText()){
+                    txtViewSample.setPaintFlags(txtViewSample.getPaintFlags()
+                            | Paint.STRIKE_THRU_TEXT_FLAG);
+                }else {
+                    txtViewSample.setPaintFlags(txtViewSample.getPaintFlags()
+                            & ~Paint.STRIKE_THRU_TEXT_FLAG);
+                }
             }
 
             @Override
