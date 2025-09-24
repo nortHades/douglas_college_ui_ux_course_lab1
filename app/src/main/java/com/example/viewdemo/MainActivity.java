@@ -97,6 +97,11 @@ public class MainActivity extends AppCompatActivity {
             public void onSingleClick() {
                 Log.d(TAG, "Detected single click ont the textView");
                 super.onSingleClick();
+                if(txtViewSample.getCurrentTextColor() != getColor(R.color.purple)){
+                    txtViewSample.setTextColor(getColor(R.color.purple));
+                }else {
+                    txtViewSample.setTextColor(getColor(R.color.white));
+                }
             }
 
             @Override
