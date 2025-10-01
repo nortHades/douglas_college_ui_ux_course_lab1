@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/txtViewSample"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
         android:background="@drawable/back"
         android:text="@string/txtSample"
         android:textColor="@color/white"
@@ -24,8 +24,8 @@
 
     <ImageView
         android:id="@+id/imageViewSample"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"

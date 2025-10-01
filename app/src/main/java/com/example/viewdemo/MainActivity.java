@@ -5,6 +5,7 @@ import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -95,6 +96,39 @@ public class MainActivity extends AppCompatActivity {
 
         txtViewSample.setOnTouchListener(new CustomTouchListener(MainActivity.this){
             @Override
+            public void onRightSwipe() {
+                Log.d(TAG,"Right Swipe on TextView");
+                super.onRightSwipe();
+                int verGravity = txtViewSample.getGravity() & Gravity.VERTICAL_GRAVITY_MASK;
+                txtViewSample.setGravity(verGravity | Gravity.END);
+            }
+
+            @Override
+            public void onLeftSwipe() {
+
+                Log.d(TAG,"Left Swipe on TextView");
+                super.onLeftSwipe();
+                int verGravity = txtViewSample.getGravity() & Gravity.VERTICAL_GRAVITY_MASK;
+                txtViewSample.setGravity(verGravity | Gravity.START);
+            }
+
+            @Override
+            public void onDownSwipe() {
+                Log.d(TAG,"Down Swipe on TextView");
+                super.onDownSwipe();
+                int horzGravity = txtViewSample.getGravity() & Gravity.HORIZONTAL_GRAVITY_MASK;
+                txtViewSample.setGravity(horzGravity | Gravity.BOTTOM);
+            }
+
+            @Override
+            public void onUpSwipe() {
+                Log.d(TAG,"Up Swipe on TextView");
+                super.onUpSwipe();
+                int horzGravity = txtViewSample.getGravity() & Gravity.HORIZONTAL_GRAVITY_MASK;
+                txtViewSample.setGravity(horzGravity | Gravity.TOP);
+            }
+
+            @Override
             public void onSingleClick() {
                 Log.d(TAG, "Detected single click ont the textView");
                 super.onSingleClick();
@@ -122,6 +156,20 @@ public class MainActivity extends AppCompatActivity {
             public void onDoubleClick() {
                 Log.d(TAG, "Detected double click ont the textView");
                 super.onDoubleClick();
+            }
+        });
+
+        imgViewSample.setOnTouchListener(new CustomTouchListener(MainActivity.this){
+            @Override
+            public void onDoubleClick() {
+                super.onDoubleClick();
+                if(imgViewSample.getScaleType()
+                        == ImageView.ScaleType.FIT_CENTER){
+                    imgViewSample.setScaleType(ImageView.ScaleType.FIT_XY);
+                }else{
+                    imgViewSample.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                }
+
             }
         });
     }
